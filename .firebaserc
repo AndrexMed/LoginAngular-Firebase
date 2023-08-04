@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "default": "angular-login-33e03",
+    "LoginAngular": "login-firebase-angular-3bfb2"
+  },
+  "targets": {
+    "login-firebase-angular-3bfb2": {
+      "hosting": {
+        "angular-boilerplate": [
+          "login-firebase-angular-3bfb2"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

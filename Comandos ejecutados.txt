@@ -1,0 +1,62 @@
+Componentes
+ng g module pages/users/sign-up --module app --route user/sign-up
+ng g module pages/users/sign-in --module app --route user/sign-in
+ng g module pages/users/profile --module app --route user/profile
+ng g module pages/users/email-verification --module app --route user/email-verification
+ng g module pages/users/forgot-password --module app --route user/forgot-password
+ng g module pages/users/home --module app --route user/home
+
+Vamos a google.firebase Creamos un nuevo proyecto
+npm install -g firebase-tools // Nos ayuda evitar configs de deploy
+Entramos authentication, Seleccionamos metodos para ingresar (correo, google)
+Luego a Cloud FireStore Creamos BD
+
+Buscamos angular fire en google
+ng add @angular/fire //Ayuda tambien con las configs
+y nos pide configuracion de la cuenta firebase y del proyecto
+
+Emuladores nos permite probar en localhost y no en el entorno de produccion
+
+
+npm i firebase
+firebase init emulators
+hosting emulator
+firestore emulator
+authentication emulator
+puerto 9099
+firestor 9098
+hosting 9097
+9096
+
+configuramos appmodule
+firebase emulators:start
+Una vez iniciado el emulador (necesita Java instalado), 
+accedemos al puerto 9096
+
+//Instalacion de Tailwind
+npm i -D tailwindcss postcss autoprefixer
+
+npx tailwindcss init // Para crear el archivo de config
+en el archivo dentro de content:
+".src/**/*.{html,ts}"
+
+https://tailwindcss.com/docs/guides/angular
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+en los style.css
+
+https://flowbite.com/blocks/marketing/login/
+
+
+creamos un componente con standalone
+ng g c shared/auth-form --standalone que significa que no va depender de ningun modulo
+
+se configuro el formulario el html y el ts
+
+se configuro el componente auth-form- se vinculo con los componentes
+de sign-in- y sign-up para poder utilizar ambos con el mismo foorm
+
+
+ng g c shared/auth-form/components/error-message
