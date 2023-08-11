@@ -60,3 +60,6 @@ de sign-in- y sign-up para poder utilizar ambos con el mismo foorm
 
 
 ng g c shared/auth-form/components/error-message
+
+creamo servicio
+ng g s pages/users/services/auth
