@@ -63,3 +63,8 @@ ng g c shared/auth-form/components/error-message
 
 creamo servicio
 ng g s pages/users/services/auth
+
+
+ng g guard shared/guards/auth --functional
+CanActivate
+

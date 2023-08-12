@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Auth, authState } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { GoogleAuthProvider, User, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, signInWithRedirect } from 'firebase/auth';
+import { GoogleAuthProvider, User, createUserWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithRedirect } from 'firebase/auth';
 
 interface ErrorResponse {
   code: string
@@ -45,9 +45,9 @@ export class AuthService {
     try {
       //Create Account
       const { user } = await createUserWithEmailAndPassword(this.auth, email, password)
-      await sendEmailVerification(user)
       //Send Email
-      this.route.navigate(['/user/email-verification'])
+      await sendEmailVerification(user)     
+      //this.route.navigate(['/user/email-verification'])
       //Redirect to Welcome Home
 
     } catch (error: unknown) {
@@ -60,11 +60,10 @@ export class AuthService {
   async SingIn(email: string, password: string): Promise<void> {
     try {
       const { user } = await signInWithEmailAndPassword(this.auth, email, password)
-      console.log(user)
+      //console.log(user)
 
       this.checkUserIsVerified(user)
-
-      
+ 
     } catch (error: unknown) {
       const { code, message } = error as ErrorResponse
       console.log("Code: ", code)
@@ -80,9 +79,18 @@ export class AuthService {
     }
   }
 
-  private checkUserIsVerified(user: User): boolean{
-    this.route.navigate(['/user/profile'])
-    return true
+  async sendPasswordResetEmail(email: string): Promise<void> {
+    try {
+      await sendPasswordResetEmail(this.auth, email)
+    } catch (error: unknown) {
+      console.log(error)
+    }
+  }
+
+  private checkUserIsVerified(user: User): void{
+    //this.route.navigate(['/user/profile'])
+    const route = user.emailVerified ? '/user/profile' : '/user/email-verification'
+    this.route.navigate([route])
   }
 
 }

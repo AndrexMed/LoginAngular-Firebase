@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { ForgotPasswordRoutingModule } from './forgot-password-routing.module';
 import { ForgotPasswordComponent } from './forgot-password.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ErrorMessageComponent } from '@app/shared/auth-form/components/error-message/error-message.component';
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { ForgotPasswordComponent } from './forgot-password.component';
   ],
   imports: [
     CommonModule,
-    ForgotPasswordRoutingModule
+    ForgotPasswordRoutingModule,
+    ReactiveFormsModule,
+    ErrorMessageComponent
   ]
 })
 export class ForgotPasswordModule { }
