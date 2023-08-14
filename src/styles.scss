@@ -1,3 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+.invalid{
+    @apply text-red-500 border-red-500 placeholder-red-500;
+}

@@ -9,7 +9,7 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth, connectAuthEmulator } from '@angular/fire/auth';
 import { provideFirestore,getFirestore, connectFirestoreEmulator } from '@angular/fire/firestore';
 import { AuthFormComponent } from "./shared/auth-form/auth-form.component";
-import { ErrorMessageComponent } from './shared/auth-form/components/error-message/error-message.component';
+import { NavbarComponent } from "./shared/components/navbar/navbar.component";
 
 @NgModule({
     declarations: [AppComponent],
@@ -24,6 +24,6 @@ import { ErrorMessageComponent } from './shared/auth-form/components/error-messa
             const firestore = getFirestore();
             connectFirestoreEmulator(firestore, "http://localhost", 9098);
             return firestore;
-        }), AuthFormComponent]
+        }), AuthFormComponent, NavbarComponent]
 })
 export class AppModule {}

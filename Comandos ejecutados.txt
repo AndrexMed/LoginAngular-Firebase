@@ -68,3 +68,7 @@ ng g s pages/users/services/auth
 ng g guard shared/guards/auth --functional
 CanActivate
 
+ng g c shared/components/navbar --standalone
+
+
+

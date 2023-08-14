@@ -47,7 +47,7 @@ export class AuthService {
       const { user } = await createUserWithEmailAndPassword(this.auth, email, password)
       //Send Email
       await sendEmailVerification(user)     
-      //this.route.navigate(['/user/email-verification'])
+      this.route.navigate(['/user/email-verification'])
       //Redirect to Welcome Home
 
     } catch (error: unknown) {

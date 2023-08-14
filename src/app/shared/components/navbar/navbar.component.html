@@ -1,0 +1,22 @@
+<nav class="py-2 navbar navbar-expand-lg bg-white shadow-md">
+    <div class="flex flex-wrap w-full px-6">
+        <div class="space-x-4">
+            <a routerLink="user/home"
+                class="inline-block px-6 py-2 mr-2.5 font-medium text-md rounded hover:bg-gray-300">Home</a>
+        </div>
+        <div class="lg:ml-auto">
+            <ng-container *ngIf="user$ | async as user ;else showLinks">
+                {{ user.email }}
+                <a routerLink="user/sign-in"
+                    class="inline-block px-6 py-2 mr-2.5 font-medium text-md rounded hover:bg-gray-300"
+                    (click)="onSingOut()">Sign Out</a>
+            </ng-container>
+            <ng-template #showLinks>
+                <a routerLink="user/sign-in"
+                    class="inline-block px-6 py-2 mr-2.5 font-medium text-md rounded hover:bg-gray-300">Sign IN</a>
+                <a routerLink="user/sign-up" class="bg-blue-600 hover:bg-blue-700 text-white
+        inline-block px-6 py-2 mr-2.5 font-medium text-md rounded">Sign UP</a>
+            </ng-template>
+        </div>
+    </div>
+</nav>

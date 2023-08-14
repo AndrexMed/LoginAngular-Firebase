@@ -7,7 +7,7 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.scss']
 })
-export class ForgotPasswordComponent implements OnInit{
+export class ForgotPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.initEmailField()
@@ -20,10 +20,12 @@ export class ForgotPasswordComponent implements OnInit{
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   async onSubmit(event: Event): Promise<void> {
+    event?.stopPropagation()
     try {
-      event?.stopPropagation()
+      this.isEmailSent = true
       await this.authSvc.sendPasswordResetEmail(this.email?.value)
-    } catch (error:unknown) {
+    } catch (error: unknown) {
+      this.isEmailSent = false
       console.log("Reset passowrd ", error)
     }
   }
@@ -32,7 +34,7 @@ export class ForgotPasswordComponent implements OnInit{
     return !!this.email.invalid && this.email.touched;
   }
 
-  private initEmailField(): void{
+  private initEmailField(): void {
     this.email = new FormControl("", [Validators.required, Validators.pattern(this.emailPattern)])
   }
 
