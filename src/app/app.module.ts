@@ -18,11 +18,11 @@ import { NavbarComponent } from "./shared/components/navbar/navbar.component";
     bootstrap: [AppComponent],
     imports: [BrowserModule, AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => {
             const auth = getAuth();
-            connectAuthEmulator(auth, "http://localhost:9099", { disableWarnings: true });
+            //connectAuthEmulator(auth, "http://localhost:9099", { disableWarnings: true });
             return auth;
         }), provideFirestore(() => {
             const firestore = getFirestore();
-            connectFirestoreEmulator(firestore, "http://localhost", 9098);
+            //connectFirestoreEmulator(firestore, "http://localhost", 9098);
             return firestore;
         }), AuthFormComponent, NavbarComponent]
 })

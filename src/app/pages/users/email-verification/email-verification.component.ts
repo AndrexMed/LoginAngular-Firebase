@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { Observable, filter, tap } from 'rxjs';
+import { filter, tap } from 'rxjs';
 import { User } from 'firebase/auth';
 
 @Component({
@@ -16,8 +16,8 @@ export class EmailVerificationComponent {
     this.authService.userState$
       .pipe(
         filter((authState) => authState != null),
-        tap((user) => this.user = user
-        )
+        tap((user) => (this.user = user)),
+        tap(() => this.authService.SingOut())
       )
       .subscribe()
   }

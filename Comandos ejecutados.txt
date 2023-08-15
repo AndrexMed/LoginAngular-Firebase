@@ -70,5 +70,7 @@ CanActivate
 
 ng g c shared/components/navbar --standalone
 
+ng g guard shared/guards/only-logged-in --functional (sin clase)
+CanActivate
 
 
